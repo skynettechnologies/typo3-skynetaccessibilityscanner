@@ -101,7 +101,20 @@ class ToolController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
             
         // scanning & monitoring code start
-        
+        echo "sads";
+          $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('be_users');
+
+$query = $queryBuilder
+    ->select('*')
+    ->from('be_users');
+
+$result = $query->execute()->fetchAll();
+foreach($result as $row){
+       
+        $user_name = $row['username'];
+        $user_email = $row['email'];
+
+}
         $domain_name = $_SERVER['HTTP_HOST'];
     
 
@@ -110,8 +123,8 @@ class ToolController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 'website'        => base64_encode($domain_name), // Encode domain
                 'platform'       => 'Typo3 CMS',
                 'is_trial_period'=> 1,
-                'name'           => $domain_name,
-                'email'          => 'no-reply@' . $domain_name,
+                'name'           => $user_name,
+                'email'          => $user_email,
                 'comapany_name'  => $domain_name,
                 'package_type'   => '10-pages'
             ];
@@ -158,6 +171,42 @@ class ToolController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         curl_close($curl);
 
         $result = json_decode($response, true);
+
+      
+
+        $data = json_decode($response, true);
+
+        $apiUserId = $data['userData']['id'] ?? 0;
+        $apiName   = $data['userData']['name'] ?? '';
+        $apiEmail  = $data['userData']['email'] ?? '';
+    
+        if (strpos($apiEmail, 'no-reply@') === 0) {
+         
+         
+            $payload = json_encode([
+                'user_id' => $apiUserId,
+                'name'    => $user_name,
+                'email'   => $user_email,
+            ]);
+
+            $ch = curl_init('https://skynetaccessibilityscan.com/api/update-user');
+            curl_setopt_array($ch, [
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_POST           => true,
+                CURLOPT_POSTFIELDS     => $payload,
+                CURLOPT_HTTPHEADER     => [
+                    'Content-Type: application/json',
+                    'Accept: application/json'
+                ],
+                CURLOPT_SSL_VERIFYPEER => false,
+            ]);
+
+            $updateResponse = curl_exec($ch);
+            curl_close($ch);
+
+        }
+
+
         // Fetch scan detail response data
         if (isset($result['data'][0])) {
             $row = $result['data'][0];
