@@ -104,21 +104,32 @@ class ToolController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function chatSettingsAction(): ResponseInterface
     {
   
-        // Scanning & Monitoring PHP code
+       $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+        ->getQueryBuilderForTable('be_users');
 
+    $result = $queryBuilder
+        ->select('username', 'email')
+        ->from('be_users')
+        ->executeQuery()
+        ->fetchAllAssociative();
+
+    foreach ($result as $row) {
+        $user_name = $row['username'];
+        $user_email = $row['email'];
+   
+    }
             
         // scanning & monitoring code start
         
-        $domain_name = $_SERVER['HTTP_HOST'];
+        $domain_name = 'contaoscanupdate.dev.us';
     
-
         // Add User domain on scanning & monitoring dashboard
           $arrDetails = [
                 'website'        => base64_encode($domain_name), // Encode domain
                 'platform'       => 'Typo3 CMS',
                 'is_trial_period'=> 1,
-                'name'           => $domain_name,
-                'email'          => 'noreply@' . $domain_name,
+                'name'           => $user_name,
+                'email'          => $user_email,
                 'comapany_name'  => $domain_name,
                 'package_type'   => '10-pages'
             ];
@@ -165,12 +176,48 @@ class ToolController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         curl_close($curl);
 
         $result = json_decode($response, true);
+
+      
+
+        $data = json_decode($response, true);
+
+        $apiUserId = $data['userData']['id'] ?? 0;
+        $apiName   = $data['userData']['name'] ?? '';
+        $apiEmail  = $data['userData']['email'] ?? '';
+    
+        if (strpos($apiEmail, 'noreply@') === 0) {
+         
+         
+            $payload = json_encode([
+                'user_id' => $apiUserId,
+                'name'    => $user_name,
+                'email'   => $user_email,
+            ]);
+
+            $ch = curl_init('https://skynetaccessibilityscan.com/api/update-user');
+            curl_setopt_array($ch, [
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_POST           => true,
+                CURLOPT_POSTFIELDS     => $payload,
+                CURLOPT_HTTPHEADER     => [
+                    'Content-Type: application/json',
+                    'Accept: application/json'
+                ],
+                CURLOPT_SSL_VERIFYPEER => false,
+            ]);
+
+            $updateResponse = curl_exec($ch);
+            curl_close($ch);
+
+        }
+
+
         // Fetch scan detail response data
         if (isset($result['data'][0])) {
             $row = $result['data'][0];
 
             $data['domain'] = $row['domain'] ?? '';
-            $data['fav_icon'] = $row['fav_icon'] ?? 'https://silverstripe.skynettechnologies.us/themes/simple/images/favicon.ico';
+            $data['fav_icon'] = $row['fav_icon'] ?? '';
             $data['url_scan_status'] = $row['url_scan_status'] ?? 0;
             $data['scan_status']= $row['scan_status'] ?? 0;
             $data['total_selected_pages'] = $row['total_selected_pages'];
@@ -220,14 +267,23 @@ class ToolController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         $result1 = json_decode($response1, true);
 
-        // Safely fetch values
+            // Safely fetch values
         $with_rem     = $result1['scan_details']['with_remediation'] ?? [];
         $without_rem  = $result1['scan_details']['without_remediation'] ?? [];
+        $widgetPurchased = $result1['widget_purchased'] ?? false;
 
-        $data['scan_details'] = [
-            'with_remediation'    => $with_rem,
-            'without_remediation' => $without_rem,
-        ];
+        // Always assign to with_remediation (since your template uses it)
+        if ($widgetPurchased === false || $widgetPurchased === "false" || $widgetPurchased == 0) {
+            // Use with_remediation data
+            $data['scan_details'] = [
+                'with_remediation' => $without_rem,
+            ];
+        } else {
+            // Use without_remediation data
+            $data['scan_details'] = [
+                'with_remediation' => $with_rem,
+            ];
+        }
         // end count detail
         //fetch package list 
         $payload = json_encode([
@@ -400,7 +456,8 @@ class ToolController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
 <!-- Section 1-->
 
-<div id="section1">
+<div id="section1" style="max-height: 90vh !important;
+    overflow-y: overlay !important;">
 
 <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
 <div id="page-wrapper">
@@ -691,11 +748,11 @@ class ToolController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                                            
 
                                             <button 
-                                                class="upgrade-btn<?= (!$is_expired && $data['final_price'] == $plan['strick_price']) ? ' cancel-btnn' : '' ?>"
-                                                data-action="<?= $is_expired ? 'upgrade' : ($data['final_price'] == $plan['strick_price'] ? 'cancel' : 'upgrade') ?>"
+                                                class="upgrade-btn<?= (!$is_expired && $data['final_price'] == $plan['price']) ? ' cancel-btnn' : '' ?>"
+                                                data-action="<?= $is_expired ? 'upgrade' : ($data['final_price'] == $plan['price'] ? 'cancel' : 'upgrade') ?>"
                                                 data-plan-id="<?= $plan['id'] ?>"
                                                 data-interval="Y">
-                                                <?= $is_expired ? 'Upgrade' : ($data['final_price'] == $plan['strick_price'] ? 'Cancel' : 'Upgrade') ?>
+                                                <?= $is_expired ? 'Upgrade' : ($data['final_price'] == $plan['price'] ? 'Cancel' : 'Upgrade') ?>
                                             </button>
                                             <div id="plans-container"
                                                 data-website-id="<?= $data['website_id'] ?>"
@@ -756,7 +813,8 @@ class ToolController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
 <!-- Section 2-->
 <!-- Violation Report data -->
-<div id="section2" style="display:none;">
+<div id="section2" style="display:none; max-height: 90vh !important;
+    overflow-y: overlay !important;">
 <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
 <div id="page-wrapper">
 <div id="page">

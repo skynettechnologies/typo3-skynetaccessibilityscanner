@@ -23,6 +23,5 @@
             "web-dir": ".Build/public",
             "extension-key": "skynetaccessibilityscanner"
         }
-    },
-    "license": "GPL-3.0-or-later"
+    }
 }
