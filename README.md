@@ -2,68 +2,89 @@
 
 ## Overview
 
-The **SkynetAccessibility Scanner Application** is a powerful **Accessibility Testing Tool** and **Accessibility Scanning Software** that enables organizations, businesses, government entities, and individuals to proactively scan, monitor, and remediate accessibility compliance issues. It functions as both an **Accessibility Checker** and **Accessibility Compliance Testing Software**, ensuring websites and applications meet global and regional accessibility standards.  
+SkynetAccessibility Scanner is a powerful Typo3 accessibility testing and scanning module designed to help organizations identify, monitor, and fix accessibility issues across their websites. It enables businesses, agencies, and government organizations to maintain compliance with global accessibility standards while improving user experience for all visitors.
 
-It supports compliance with **WCAG 2.0, 2.1, 2.2, ADA, Section 508, European EN 301 549, UK Equality Act, Australian DDA, Canada ACA, and European countries accessibility standards (such as Germany BITV 2.0, France RGAA, Spain UNE 139803, and Italy Stanca Act)**. With user-friendly issue highlighting and remediation recommendations, even non-technical users can resolve accessibility challenges effectively.
-
-This tool is designed for:
-
-- Businesses of all sizes  
-- Enterprises  
-- Government entities  
-- Website owners  
-- E-commerce platforms  
-- Development and maintenance agencies  
+Built for Typo3 12 and 13, this module provides automated scanning, detailed reporting, and continuous monitoring - making accessibility management simple and scalable.
 
 [**Start your 10-Day Free Trial today!**](https://skynetaccessibilityscan.com/trial-subscription)
 
-## Why SkynetAccessibility Scanner?
+## Why use Automated Typo3 accessibility monitoring plugin - SkynetAccessibility Scanner?
 
-In today’s digital world, **Accessibility Testing** isn’t a one-time task. Evolving standards and regulations require continuous monitoring and compliance. This solution empowers organizations to **detect, track, and remediate accessibility violations** across websites, web applications, and documents using advanced **Accessibility Scanning Software**.  
+Accessibility is not a one-time task. With evolving standards and legal requirements, websites require continuous monitoring and improvements. This module helps you:
 
-With proactive monitoring, you can ensure that your digital properties remain inclusive and accessible, while minimizing compliance risks.
+Detect accessibility issues automatically
+Track compliance across multiple pages
+Prioritize fixes with actionable recommendations
+Maintain long-term accessibility compliance
+It acts as both an accessibility checker and compliance testing tool, helping teams proactively manage accessibility risks.
 
-## Key Features
+## Features
 
-- **Accessibility Testing** – Automated scanning and issue detection with actionable guidance.  
-- **Accessibility Checker** – Highlights issues and suggests fixes for developers and content editors.  
-- **10-Days Free Trial** – Get started risk-free. Subscriptions auto-convert after trial, with pay-later flexibility.  
-- **Flexible Subscription** – Cancel anytime with no hidden fees.  
-- **Sitemap-Based Monitoring** – Automatically scans website pages based on sitemap.  
-- **Automated Comprehensive Website Scanning** – Detect WCAG, ADA, Section 508, EN 301 549, and other compliance violations within 24 hours of setup.  
-- **Scheduled Monitoring** – Automate scans weekly, monthly, or quarterly.  
-- **Auto-Generated Scan Reports** – Detailed reports with severity levels, recommendations, and compliance tracking.  
-- **Multi-Language Support** – Scanning and monitoring available in 40+ languages.  
-- **Integration with All in One Accessibility® Dashboard** – Centralized insights and controls.  
-- **Optional Add-Ons** – Enhance compliance with custom add-ons.  
-- **Accessibility Compliance Testing Software** - features for enterprise workflows and audit trails.  
-- **Accessibility Scanning Monitoring Application** - supports API-based integrations for automation and reporting.
+- Automated Accessibility Scanning.
+- Detailed Automated generated reports with severity levels, issues descriptions, and clear remediation guidance.
+- Sitemap-Based Scanning and Monitoring
+- Multi Resolution Monitoring
+- Set up weekly, monthly, or quarterly scheduled ongoing accessibility compliance monitoring
+- Supports scanning in 190+ languages, making it ideal for global websites.
+- Seamlessly integrates with the All in One Accessibility dashboard for centralized management.
 
-## Compliance Standards Supported
+### Supported Global Accessibility Compliance Standards  
 
-- WCAG 2.0, 2.1, 2.2  
-- ADA  
-- Section 508  
-- EN 301 549 (EU)  
-- UK Equality Act  
-- Australian DDA  
+- WCAG 2.0, 2.1, 2.2
+- ADA
+- Section 508
+- EAA EN 301 549 (EU)
+- UK Equality Act
+- Australian DDA
 - Canada ACA
+- Ontario AODA
+- California Unruh
+- Israeli Standard 5568
+- Germany BITV 2.0
+- France RGAA
+- Spain UNE 139803
+- Italy Stanca Act
+- Indian RPD Act
+- GIGW 3.0
+- Brazilian Inclusion law LBI 13.146/2015
+- Japan JIS X 8341
 
-### European Countries Accessibility Standards
+### Key Benefits for Typo3 Users
 
-Our SkynetAccessibility Scanner Application aligns with European country-level accessibility requirements, including (but not limited to):
+- Works directly within the Typo3 ecosystem
+- Reduces manual accessibility testing efforts
+- Helps improve user experience for people with disabilities
+- Supports legal and compliance requirements
+- Scales across multiple Typo3 websites and projects
+- Free Trial and Flexible Subscription
 
-- **Germany** — BITV 2.0 (Barrierefreie Informationstechnik-Verordnung)  
-- **France** — RGAA (Référentiel Général d’Amélioration de l’Accessibilité)  
-- **Spain** — UNE 139803 (Spanish accessibility technical standard)  
-- **Italy** — Stanca Act (Legislative Decree on Accessibility of ICT)  
-- **Netherlands** — Tijdelijke richtlijn / Nederland accessibility requirements (aligns with EN 301 549)  
-- **Sweden** — Swedish regulations aligned with EU accessibility directives  
-- **Poland, Belgium, Portugal, Ireland, Greece, Czechia** — national implementations that map to EN 301 549 / WCAG requirements
+[**Start with a 10 days free trial**](https://skynetaccessibilityscan.com/trial-subscription) and explore the full capabilities of the accessibility monitoring Typo3 module. Flexible plans allow to evaluate website accessibility requirements.
 
-> Note: EN 301 549 is the EU-level harmonized standard that maps to WCAG and is widely used as the technical reference for accessibility across EU member states. Individual countries may have additional national guidance and implementation specifics — the scanner flags issues against common technical checks and can be mapped to local regulations for reporting.
+### Pricing
 
-## How It Works
+- [10 Days free trial](https://skynetaccessibilityscan.com/trial-subscription)
+
+#### Single Site
+
+- Small Site (Up to 25 pages): $9 Per Month
+- Medium Site (Up to 250 pages): $19 per month
+- Large Site (Up to 1000 pages): $89 per month
+- Extra Large Site (Up to 2500 pages): 199 per month
+
+#### Multi-site
+
+- Silver (3 websites up to 1500 pages): $129 per month
+- Gold (5 websites up to 2500 pages): $219 per month
+- Platinum (10 websites up to 5000 pages): $399 per month
+
+### Paid Add-ons
+
+- Manual Accessibility Audit Report
+- Manual Accessibility Remediation
+- PDF/Document Accessibility Remediation
+- VPAT Report/Accessibility Conformance Report (ACR)
+
+## How does Typo3 accessibility scanning and monitoring work?
 
 1. **Scan Your Website** – Run automated scans to detect accessibility issues with our Accessibility Testing Tool.  
 2. **Review Reports** – Access prioritized issue lists with remediation recommendations.  
@@ -71,7 +92,7 @@ Our SkynetAccessibility Scanner Application aligns with European country-level a
 
 ## Getting Started
 
-1. Visit [Skynet Technologies Accessibility Monitoring](https://www.skynettechnologies.com/accessibility-scanning-and-monitoring).  
+1. Visit [SkynetAccessibility Scanner](https://www.skynettechnologies.com/accessibility-scanning-and-monitoring).  
 2. Request a demo or sign up for a free [trial](https://skynetaccessibilityscan.com/trial-subscription).  
 3. Configure domains and scan settings.  
 4. Start monitoring accessibility compliance and download reports.
@@ -89,6 +110,7 @@ Our SkynetAccessibility Scanner Application aligns with European country-level a
 ## Installation
 
 ### Prerequisites
+
 - Typo version 13*
 
 ### Steps
@@ -120,6 +142,7 @@ Must have installed your project used by composer.
 3. In the Control Panel, go to Skynettechnologies → SkynetAccessibility Scanner.
 
 ## Activation and Deactivation
+
 1. Navigate to **Extensions**.
 2. Locate *SkynetAccessibility Scanner* in the list.
 3. Use the **Enable** or **Disable** toggle to activate or deactivate the extension as needed.
@@ -144,6 +167,7 @@ To avoid CORS policy issues, ensure the following URLs are allowed in your websi
 ![SkynetAccessibility_Scanner_Image_1](https://www.skynettechnologies.com/sites/default/files/SkynetAccessibilityScanner/SkynetAccessibility_Scanner_Image_1.jpg)  
 ![SkynetAccessibility_Scanner_Image_2](https://www.skynettechnologies.com/sites/default/files/SkynetAccessibilityScanner/SkynetAccessibility_Scanner_Image_2.jpg)
 ![SkynetAccessibility_Scanner_Image_3](https://www.skynettechnologies.com/sites/default/files/SkynetAccessibilityScanner/SkynetAccessibility_Scanner_Image_3.jpg)
+![SkynetAccessibility_Scanner_Image_4](https://www.skynettechnologies.com/sites/default/files/SkynetAccessibilityScanner/SkynetAccessibility_Scanner_Image_4.jpg)
 
 ## Video
 
