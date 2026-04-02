@@ -59,7 +59,7 @@ It acts as both an accessibility checker and compliance testing tool, helping te
 - Scales across multiple TYPO3 websites and projects
 - Free Trial and Flexible Subscription
 
-Start with a 10-days free trial and explore the full capabilities of the accessibility monitoring TYPO3 module. Flexible plans allow to evaluate website accessibility requirements.
+Explore the full capabilities of the accessibility monitoring TYPO3 module. Flexible plans allow to evaluate website accessibility requirements.
 
 ### Pricing
 
