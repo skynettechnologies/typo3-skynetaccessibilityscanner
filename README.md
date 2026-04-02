@@ -57,7 +57,6 @@ It acts as both an accessibility checker and compliance testing tool, helping te
 - Helps improve user experience for people with disabilities
 - Supports legal and compliance requirements
 - Scales across multiple TYPO3 websites and projects
-- Free Trial and Flexible Subscription
 
 Explore the full capabilities of the accessibility monitoring TYPO3 module. Flexible plans allow to evaluate website accessibility requirements.
 
