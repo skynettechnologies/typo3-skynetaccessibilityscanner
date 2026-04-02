@@ -2,20 +2,21 @@
 
 ## Overview
 
-SkynetAccessibility Scanner is a powerful Typo3 accessibility testing and scanning module designed to help organizations identify, monitor, and fix accessibility issues across their websites. It enables businesses, agencies, and government organizations to maintain compliance with global accessibility standards while improving user experience for all visitors.
+SkynetAccessibility Scanner is a powerful TYPO3 accessibility testing and scanning module designed to help organizations identify, monitor, and fix accessibility issues across their websites. It enables businesses, agencies, and government organizations to maintain compliance with global accessibility standards while improving user experience for all visitors.
 
-Built for Typo3 12 and 13, this module provides automated scanning, detailed reporting, and continuous monitoring - making accessibility management simple and scalable.
+Built for TYPO3 12 and 13, this module provides automated scanning, detailed reporting, and continuous monitoring - making accessibility management simple and scalable.
 
-[**Start your 10-Day Free Trial today!**](https://skynetaccessibilityscan.com/trial-subscription)
+[**Start 10-Days Free Trial!**](https://skynetaccessibilityscan.com/trial-subscription)
 
-## Why use Automated Typo3 accessibility monitoring plugin - SkynetAccessibility Scanner?
+## Why use Automated TYPO3 accessibility monitoring plugin - SkynetAccessibility Scanner?
 
 Accessibility is not a one-time task. With evolving standards and legal requirements, websites require continuous monitoring and improvements. This module helps you:
 
-Detect accessibility issues automatically
-Track compliance across multiple pages
-Prioritize fixes with actionable recommendations
-Maintain long-term accessibility compliance
+- Detect accessibility issues automatically
+- Track compliance across multiple pages
+- Prioritize fixes with actionable recommendations
+- Maintain long-term accessibility compliance
+
 It acts as both an accessibility checker and compliance testing tool, helping teams proactively manage accessibility risks.
 
 ## Features
@@ -49,20 +50,20 @@ It acts as both an accessibility checker and compliance testing tool, helping te
 - Brazilian Inclusion law LBI 13.146/2015
 - Japan JIS X 8341
 
-### Key Benefits for Typo3 Users
+### Key Benefits for TYPO3 Users
 
-- Works directly within the Typo3 ecosystem
+- Works directly within the TYPO3 ecosystem
 - Reduces manual accessibility testing efforts
 - Helps improve user experience for people with disabilities
 - Supports legal and compliance requirements
-- Scales across multiple Typo3 websites and projects
+- Scales across multiple TYPO3 websites and projects
 - Free Trial and Flexible Subscription
 
-[**Start with a 10 days free trial**](https://skynetaccessibilityscan.com/trial-subscription) and explore the full capabilities of the accessibility monitoring Typo3 module. Flexible plans allow to evaluate website accessibility requirements.
+Start with a 10-days free trial and explore the full capabilities of the accessibility monitoring TYPO3 module. Flexible plans allow to evaluate website accessibility requirements.
 
 ### Pricing
 
-- [10 Days free trial](https://skynetaccessibilityscan.com/trial-subscription)
+- 10 Days free trial
 
 #### Single Site
 
@@ -84,28 +85,18 @@ It acts as both an accessibility checker and compliance testing tool, helping te
 - PDF/Document Accessibility Remediation
 - VPAT Report/Accessibility Conformance Report (ACR)
 
-## How does Typo3 accessibility scanning and monitoring work?
+## How does TYPO3 accessibility scanning and monitoring work?
 
-1. **Scan Your Website** – Run automated scans to detect accessibility issues with our Accessibility Testing Tool.  
-2. **Review Reports** – Access prioritized issue lists with remediation recommendations.  
-3. **Monitor & Maintain** – Keep your website accessible with ongoing monitoring using the Accessibility Scanning Monitoring Application.  
+- **Scan Your Website** – Run automated scans to detect accessibility issues with our Accessibility Testing Tool.  
+- **Review Reports** – Access prioritized issue lists with remediation recommendations.  
+- **Monitor & Maintain** – Keep your website accessible with ongoing monitoring using the Accessibility Scanning Monitoring Application.  
 
-## Getting Started
+## Getting Started with SkynetAccessibility Scanner
 
-1. Visit [SkynetAccessibility Scanner](https://www.skynettechnologies.com/accessibility-scanning-and-monitoring).  
-2. Request a demo or sign up for a free [trial](https://skynetaccessibilityscan.com/trial-subscription).  
-3. Configure domains and scan settings.  
-4. Start monitoring accessibility compliance and download reports.
-
-## Who Can Benefit?
-
-- Website Owners & Businesses  
-- Developers & Web Agencies  
-- Digital Marketing & SEO Professionals  
-- Government & Public Sector Organizations  
-- Legal & Compliance Teams  
-- Advocacy & Accessibility-Focused Organizations  
-- E-commerce & SaaS Platforms
+- Visit [WCAG Accessibility Scanning and Monitoring](https://www.skynettechnologies.com/accessibility-scanning-and-monitoring)
+- Request a demo or [sign up for a free trial](https://skynetaccessibilityscan.com/trial-subscription) to explore accessibility scanning features.
+- Configure website domains and customize accessibility scan settings.
+- Start monitoring WCAG compliance, track accessibility issues, and download detailed audit report.
 
 ## Installation
 
@@ -123,7 +114,7 @@ Requirements
 
 Must have installed your project used by composer.
 
-1. Open your terminal and go to your Typo3 project:
+1. Open your terminal and go to your TYPO3 project:
 
    cd /path/to/project
 
@@ -171,7 +162,7 @@ To avoid CORS policy issues, ensure the following URLs are allowed in your websi
 
 ## Video
 
-[![SkynetAccessibility Scanner](https://img.youtube.com/vi/xhLKR0FuKJc/0.jpg)](https://www.youtube.com/watch?v=xhLKR0FuKJc)
+[![SkynetAccessibility Scanner](https://img.youtube.com/vi/g0RNlTOQImY/0.jpg)](https://www.youtube.com/watch?v=g0RNlTOQImY)
 
 ## Submit a Support Request
 
