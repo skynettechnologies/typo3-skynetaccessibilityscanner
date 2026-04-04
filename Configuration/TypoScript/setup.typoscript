@@ -34,7 +34,7 @@ module.tx_skynetaccessibilityscanner_Sntg_skynetaccessibilityscannertoolmodule {
 page {
   // Initiate all the css-together
   includeCSS {
-    30001 =  EXT:skynetaccessibilityscanner/Resources/Public/Css/scanning-and-monitoring-app.css
+    30001 =  EXT:skynetaccessibilityscanner/Resources/Public/Css/adawidget.css
   }
 
 }
@@ -54,4 +54,3 @@ page.111246 {
   }
   settings < plugin.tx_typo3alloneaccessibility_tool.settings
 }
-

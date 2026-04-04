@@ -1,5 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://platform.linkedin.com ">
 <f:layout name="Backend/Default" />
 
 <f:section name="content">
-    
+
+
+
+<div id="skynet-config"
+     data-website-id="{data.website_id}"
+     data-paypal-id="{data.paypal_subscr_id}"
+     data-package-id="{data.package_id}"
+     data-subscr-interval="{data.subscr_interval}"
+     data-end-date="{data.end_date}"
+     data-cancel-date="{data.cancel_date}">
+</div>
 </f:section>
+
+</html>

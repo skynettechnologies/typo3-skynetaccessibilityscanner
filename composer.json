@@ -1,9 +1,9 @@
 {
     "name": "skynettechnologies/typo3-skynetaccessibilityscanner",
     "type": "typo3-cms-extension",
-    "description": "Scan, monitor, and identify website accessibility issues across WCAG 2.0, 2.1, 2.2, ADA, Section 508, EN 301 549, UK Equality Act, Australian DDA, and Canada ACA. Get simple issue highlights with recommended fixes.",
+    "description": "SkynetAccessibility Scanner Scan, monitor, and identify website accessibility issues across WCAG 2.0, 2.1, 2.2, ADA, and EAA.",
     "require": {
-        "typo3/cms-core": "^13"
+        "typo3/cms-core": "^14"
     },
     "autoload": {
         "psr-4": {
@@ -23,6 +23,5 @@
             "web-dir": ".Build/public",
             "extension-key": "skynetaccessibilityscanner"
         }
-    },
-    "license": "GPL-3.0-or-later"
+    }
 }
