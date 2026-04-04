@@ -45,8 +45,10 @@ class MvcPropertyMappingConfigurationService extends \TYPO3\CMS\Extbase\Mvc\Cont
      * @param \TYPO3\CMS\Extbase\Mvc\Controller\Arguments $controllerArguments
      * @return void
      */
-    public function initializePropertyMappingConfigurationFromRequest(\TYPO3\CMS\Extbase\Mvc\Request $request, \TYPO3\CMS\Extbase\Mvc\Controller\Arguments $controllerArguments)
-    {
+  public function initializePropertyMappingConfigurationFromRequest(
+    \TYPO3\CMS\Extbase\Mvc\Request $request,
+    \TYPO3\CMS\Extbase\Mvc\Controller\Arguments $controllerArguments
+): void {
         $trustedPropertiesToken = $request->getInternalArgument('__trustedProperties');
         if (!is_string($trustedPropertiesToken)) {
             return;

@@ -101,7 +101,7 @@ Explore the full capabilities of the accessibility monitoring TYPO3 module. Flex
 
 ### Prerequisites
 
-- Typo version 13*
+- Typo version 14*
 
 ### Steps
 

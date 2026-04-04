@@ -1,8 +1,8 @@
 <?php
 
 $EM_CONF['skynetaccessibilityscanner'] = [
-    'title' => 'SkynetAccessibility Scanner',
-    'description' => 'WCAG Website Accessibility widget improves Typo3 website ADA compliance and browser experience for ADA, WCAG 2.1 & 2.2, Section 508, Australian DDA, European EAA EN 301 549, UK Equality Act (EA), Israeli Standard 5568, California Unruh, Ontario AODA, Canada ACA, German BITV, France RGAA, Brazilian Inclusion Law (LBI 13.146/2015), Spain UNE 139803:2012, JIS X 8341 (Japan), Italian Stanca Act and Switzerland DDA Standards.',
+    'title' => 'SkynetAccessibility Scanner®',
+    'description' => 'Scan, monitor, and identify website accessibility issues across WCAG 2.0, 2.1, 2.2, ADA, Section 508, EN 301 549, UK Equality Act, Australian DDA, and Canada ACA. Get simple issue highlights with recommended fixes.',
     'category' => 'plugin',
     'author' => 'Skynet Technologies USA LLC',
     'author_email' => 'hello@skynetindia.info',
@@ -10,10 +10,10 @@ $EM_CONF['skynetaccessibilityscanner'] = [
     'state' => 'stable',
     'uploadfolder' => 0,
     'createDirs' => '',
-    'version' => '13.0.1',
+    'version' => '14.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '13.0.0-13.9.99',
+            'typo3' => '14.0.0-14.9.99',
         ],
         'conflicts' => [],
         'suggests' => [],
