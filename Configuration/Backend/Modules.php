@@ -11,8 +11,8 @@ return [
     'Sntg_SkynetaccessibilityscannerToolmodule' => [
         'parent' => 'Sntg_module',
         'position' => ['before' => 'top'],
-        'access' => 'admin,user,group',
-        'path' => '/module/Skynettechnologies/SkynetaccessibilityscannerToolmodule',
+        'access' => 'admin',
+        'path' => '/module/skynetaccessibilityscanner/SkynetaccessibilityscannerToolmodule',
         'icon'   => 'EXT:skynetaccessibilityscanner/Resources/Public/Icons/whats_app.svg',
         'labels' => 'LLL:EXT:skynetaccessibilityscanner/Resources/Private/Language/locallang_whastappmodule.xlf',
         'navigationComponent' => '@typo3/backend/page-tree/page-tree-element',
