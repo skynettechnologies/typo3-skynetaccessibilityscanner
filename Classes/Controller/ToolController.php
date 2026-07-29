@@ -110,7 +110,7 @@ class ToolController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         
         $host = GeneralUtility::locationHeaderUrl( '/' );
         $domain = parse_url($host, PHP_URL_HOST);
-        
+
         // Query 'be_users' table
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('be_users');
         $result = $queryBuilder
@@ -149,6 +149,7 @@ class ToolController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     
 
     $response = curl_exec($ch);
+    
     if (curl_errno($ch)) {
         echo 'Curl error: ' . curl_error($ch);
     }
@@ -194,11 +195,20 @@ class ToolController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     }
 
     // ----------------- Get Scan Detail -----------------
-    $row = callApiPost('https://skynetaccessibilityscan.com/api/get-scan-detail', [
-        'website' => base64_encode($domain_name)
-    ])['data'][0] ?? [];
+$response = callApiPost(
+    'https://skynetaccessibilityscan.com/api/get-scan-detail',
+    ['website' => base64_encode($domain_name)]
+);
 
+// Get main scan row
+$row = $response['data'][0] ?? [];
+
+
+// ✅ Get user data separately
+$userData = $response['userData'] ?? [];
     $data = [
+        'user_id' => $userData['id'] ?? 0,
+        'user_email' => $userData['email'] ?? '',
         'domain' => $row['domain'] ?? '',
         'fav_icon' => $row['fav_icon'] ?? '',
         'url_scan_status' => $row['url_scan_status'] ?? 0,
@@ -288,7 +298,16 @@ class ToolController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     $data['websiteId'] = $websiteId;
 
     
+ $data['userid'] = $data['user_id'];
 
+    $email = $data['user_email'] ?? '';
+
+
+
+    $isFallback = empty($email) || strpos($email, 'no-reply@') === 0;
+
+    // Decide display
+    $emailFormDisplay = $isFallback ? 'block' : 'none';
     ?>
     <meta name="description" content="" />
     <link rel="mask-icon" href="" />
@@ -308,12 +327,192 @@ class ToolController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             max-width: 1280px !important;
         }
     }
-        
+       
+        .demo-card{
+      width:100%;max-width:680px;background:#fff;border:1.5px solid #e8daff;
+      border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(66,0,131,.10)
+    }
+    .skynet-email-toggle-bar{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+      padding:14px 20px;background:#f8f4ff;border-bottom:1.5px solid transparent
+    }
+    #skynetEmailToggleWrapper.skynet-form-open .skynet-email-toggle-bar{border-bottom-color:#e0cfff}
+    .skynet-email-toggle-label{display:flex;align-items:center;font-size:14px;font-weight:500;color:#420083}
+    .skynet-email-toggle-btn,.skynet-email-save-btn{
+      display:inline-flex;align-items:center;border:none;border-radius:6px;cursor:pointer;
+      transition:.2s;background:#420083;color:#fff
+    }
+    .skynet-email-toggle-btn{padding:8px 18px;font-size:14px;font-weight:600}
+    .skynet-email-toggle-btn:hover,.skynet-email-save-btn:hover{background:#5a00b3}
+    .skynet-email-toggle-btn:active{transform:scale(.97)}
+    #skynetEmailToggleWrapper.skynet-form-open #skynetEmailToggleArrow{transform:rotate(180deg)}
+    .skynet-email-form-panel{background:#fff;overflow:hidden}
+    .skynet-email-form-inner{padding:24px 28px 20px}
+    .skynet-email-form-title{margin:0 0 18px;font-size:16px;font-weight:700;color:#420083}
+    .skynet-email-form-error,.skynet-email-form-success{
+      padding:10px 14px;border-radius:6px;font-size:13px;margin-bottom:14px;display:none
+    }
+    .skynet-email-form-error{background:#fff5f5;border:1px solid #fc8181;color:#c53030}
+    .skynet-email-form-success{background:#f0fff4;border:1px solid #68d391;color:#276749}
+    .skynet-email-form-row{margin-bottom:16px;display:flex;flex-direction:column;gap:6px}
+    .skynet-email-form-label{font-size:13px;font-weight:600;color:#333}
+    .skynet-email-form-input{
+      width:100%;max-width:440px;padding:10px 14px;border:1.5px solid #ccc;border-radius:6px;
+      font-size:14px;color:#222;background:#fafafa;outline:none;transition:.2s
+    }
+    .skynet-email-form-input:focus{border-color:#420083;box-shadow:0 0 0 3px rgba(66,0,131,.12);background:#fff}
+    .skynet-input-error{border-color:#e53e3e!important;box-shadow:0 0 0 3px rgba(229,62,62,.10)!important}
+    .skynet-email-form-actions{display:flex;align-items:center;gap:12px;margin-top:8px}
+    .skynet-email-save-btn{padding:10px 26px;font-size:14px;font-weight:700}
+    .skynet-email-save-btn:disabled{opacity:.6;cursor:not-allowed}
+    .skynet-email-cancel-btn{
+      padding:10px 18px;background:transparent;color:#666;border:1.5px solid #ccc;border-radius:6px;
+      font-size:14px;font-weight:500;cursor:pointer;transition:.2s
+    }
+    .skynet-email-cancel-btn:hover{border-color:#420083;color:#420083}
+    @keyframes skynet-spin{to{transform:rotate(360deg)}}
+    @media (max-width:600px){
+      .skynet-email-toggle-bar{flex-direction:column;align-items:flex-start}
+      .skynet-email-form-inner{padding:16px}
+      .skynet-email-form-actions{flex-direction:column}
+      .skynet-email-save-btn,.skynet-email-cancel-btn{width:100%;justify-content:center}
+    }
+    
     </style>
     </head>
 
     <body class="layout-no-sidebars has-featured-top page-node-1860 path-node node--type-page scrolled scrolldown">
+     <div id="plugin-content" style="width:50%; margin:25 auto;">
+        <!-- - User register -->
+        <div class="userform" >
+            <!-- Email Registration Toggle Wrapper
+            Shown when user's email is absent/fallback (checked on page load).
+            JS hides this entire block once a valid email is saved. -->
+         <div id="skynetEmailToggleWrapper" style="display:<?php echo $emailFormDisplay; ?>;">
+                <!-- Toggle bar: label + open/close button -->
+                <div class="skynet-email-toggle-bar">
+                    <span class="skynet-email-toggle-label">
+                        <!-- Envelope icon -->
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="18"
+                            height="18"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            style="vertical-align:middle;margin-right:6px;"
+                        >
+                            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9
+                2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" fill="#420083"/>
+                        </svg>
+                        Please Enter Your Email for further Scanning Reports.
+                    </span>
+                    <!-- Toggle button -->
+                    <button
+                        id="skynetEmailToggleBtn"
+                        class="skynet-email-toggle-btn"
+                        type="button"
+                    >
+                        <span id="skynetEmailToggleBtnText">Add Email</span>
+                        <!-- Arrow — rotates 180° when form is open (CSS class controls it) -->
+                        <svg
+                            id="skynetEmailToggleArrow"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            style="margin-left:6px;transition:transform 0.25s;"
+                        >
+                            <path d="M7 10l5 5 5-5H7z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Collapsible registration form (hidden until toggle is clicked) -->
+                <div id="skynetEmailFormPanel" class="skynet-email-form-panel" style="display:none;">
+                    <div class="skynet-email-form-inner" style="
+                            background-image: linear-gradient(rgb(255 255 255 / 100%), rgba(0, 0, 0, 0.1)), url(https://sanity.skynettechnologies.us/assets/images/sitemap-bg.png);
 
+                            /* background-image: url(https://sanity.skynettechnologies.us/assets/images/sitemap-bg.png); */
+                            background-repeat: no-repeat; 
+                            background-position: center;
+
+                            background-size: cover;
+                        
+                        ">
+                        <h3 class="skynet-email-form-title">Register Your Details</h3>
+                        <!-- Inline error / success banners -->
+                        <div id="skynetEmailFormError" class="skynet-email-form-error" style="display:none;"></div>
+                        <div id="skynetEmailFormSuccess" class="skynet-email-form-success" style="display:none;"></div>
+                        <!-- Full Name field -->
+                        <div class="skynet-email-form-row">
+                            <label class="skynet-email-form-label" for="skynetRegName">
+                                Full Name
+                                <span style="color:#e53e3e;">*</span>
+                            </label>
+                            <input
+                                id="skynetRegName"
+                                class="skynet-email-form-input"
+                                type="text"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                            >
+                        </div>
+                        <!-- Email Address field -->
+                        <div class="skynet-email-form-row">
+                            <label class="skynet-email-form-label" for="skynetRegEmail">
+                                Email Address
+                                <span style="color:#e53e3e;">*</span>
+                            </label>
+                            <input
+                                id="skynetRegEmail"
+                                class="skynet-email-form-input"
+                                type="email"
+                                placeholder="Enter your email address"
+                                autocomplete="email"
+                            >
+                        </div>
+                        <!-- Action buttons -->
+                        <div class="skynet-email-form-actions">
+                            <!-- Save button — shows spinner while API call is in-flight -->
+                            <button
+                                id="skynetRegSaveBtn"
+                                class="skynet-email-save-btn"
+                                type="button"
+                            >
+                                <span id="skynetRegSaveBtnText">Save</span>
+                                <!-- Spinner (hidden; shown during async save) -->
+                                <svg
+                                    id="skynetRegSaveSpinner"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    style="display:none;margin-left:8px;
+                    animation:skynet-spin 0.8s linear infinite;"
+                                >
+                                    <circle
+                                        cx="12"
+                                        cy="12"
+                                        r="10"
+                                        stroke="currentColor"
+                                        stroke-width="3"
+                                        stroke-dasharray="31.4"
+                                        stroke-dashoffset="10"
+                                    />
+                                </svg>
+                            </button>
+                            <!-- Cancel closes the form without saving -->
+                            <button class="skynet-email-cancel-btn" type="button">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ═══ END OF COMPONENT ═══ -->
+        </div>
+    </div>
     <!-- Section 1-->
 
     <div id="section1">
