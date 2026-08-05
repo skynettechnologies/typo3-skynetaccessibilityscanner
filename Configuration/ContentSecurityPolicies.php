@@ -21,7 +21,6 @@ return Map::fromEntries([
         new Mutation(MutationMode::Extend, Directive::DefaultSrc, SourceKeyword::self),
         // script-src 'nonce-...' required for importmaps
         new Mutation(MutationMode::Extend, Directive::ScriptSrc, SourceKeyword::nonceProxy),
-        
         // `style-src 'unsafe-inline'` required for lit in safari and firefox to allow inline <style> tags
         // (for browsers that do not support https://caniuse.com/mdn-api_shadowroot_adoptedstylesheets)
         new Mutation(MutationMode::Extend, Directive::StyleSrc, SourceKeyword::unsafeInline),
@@ -51,8 +50,7 @@ return Map::fromEntries([
             MutationMode::Extend,
             Directive::ImgSrc,
             new UriValue('*.skynettechnologies.com'),
-            new UriValue('*.skynettechnologies.us'),
-             new UriValue('*.skynetaccessibilityscan.com')
+            new UriValue('*.skynettechnologies.us')
         ),
         new Mutation(
             MutationMode::Extend,
@@ -61,7 +59,6 @@ return Map::fromEntries([
             new UriValue('*.skynettechnologies.us'),
             new UriValue('https://*.googleapis.com'),
             new UriValue('https://*.gstatic.com'),
-             new UriValue('https://skynetaccessibilityscan.com'),
             SourceScheme::blob, // thx Google!
             SourceScheme::data, // thx Google!
         ),
