@@ -330,10 +330,9 @@ document.addEventListener('DOMContentLoaded', function () {
 const formatDate = (d) => d.split(' ')[0];
 
 const cancelDateOnly = formatDate(cancelDateStr);
-
-const isCancelToday =
-  cancelDateOnly <= todayStr;
-
+const endDateonly =formatDate(endDateStr);
+const isCancelToday = cancelDateOnly && cancelDateOnly <= todayStr;
+ const isenddateOnly = endDateonly <= todayStr;
 const isExpired =
   endDateStr &&
   new Date(endDateStr.replace(' ', 'T')).getTime() < Date.now();
@@ -348,15 +347,25 @@ const isExpired =
             }
 
             if (isExpired || isCancelToday) {
+           
                 btn.textContent = 'Upgrade';
                 btn.dataset.action = 'upgrade';
                 btn.classList.remove('cancel-btnn');
+            } 
+              else if(isenddateOnly)
+            {
+           
+                 btn.textContent = 'Cancel';
+                    btn.dataset.action = 'cancel';
+                    btn.classList.add('cancel-btnn');
             } else {
+            
                 if (planAction === 'cancel') {
                     btn.textContent = 'Cancel';
                     btn.dataset.action = 'cancel';
                     btn.classList.add('cancel-btnn');
                 } else {
+
                     btn.textContent = 'Upgrade';
                     btn.dataset.action = 'upgrade';
                     btn.classList.remove('cancel-btnn');

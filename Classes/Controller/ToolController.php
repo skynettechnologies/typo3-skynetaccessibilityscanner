@@ -237,7 +237,7 @@ $userData = $response['userData'] ?? [];
         'total_fail_sum' => $row['total_fail_sum'] ?? '',
         'is_expired' => $row['is_expired'] ?? ''
     ];
-
+// echo $data['end_date'] ;
     // ----------------- Get Scan Count -----------------
     $result1 = callApiPost('https://skynetaccessibilityscan.com/api/get-scan-count', [
         'website' => base64_encode($domain_name)
@@ -562,6 +562,7 @@ $userData = $response['userData'] ?? [];
                                 </div>
                                 <div class="status-card">
                                     <span class="status-title">Last Scanned</span>
+                                 
                                     <?php if (($data['url_scan_status'] ?? 0) < 2): ?>
                                     <span class="status-value status-inactive">
                                         <img src="https://sanity.skynettechnologies.us/assets/images/not-shared.svg" 
@@ -595,6 +596,10 @@ $userData = $response['userData'] ?? [];
                                                     echo date("F jS Y", strtotime($data['last_scan']));
                                                 }
                                             ?>
+                                        </span>
+                                    <?php elseif (($data['scan_status'] ?? 0) == 4): ?>
+                                        <span class="status-value status-inactive">
+                                            N/A
                                         </span>
                                     <?php endif; ?>
                                 </div>
@@ -846,7 +851,7 @@ $userData = $response['userData'] ?? [];
                                 <p class="pricing-contact">
                                     Are you looking for a custom plan or Enterprise
                                     plan? Contact us
-                                    <a href="mailto:hello@skynettechnologies.com">hello@skynettechnologies.com</a>
+                                    <a href="mailto:hello@skynettechnologies.com" target="_blank" rel="noopener noreferrer">hello@skynettechnologies.com</a>
                                 </p>
                             </section>
 
@@ -858,7 +863,7 @@ $userData = $response['userData'] ?? [];
                                     <strong>Facing any issues with SkynetAccessibility Scanner?</strong>
                                     Report a problem, we will get back to you very soon!
                                 </p>
-                                <a href="https://www.skynettechnologies.com/report-accessibility-problem" class="help-btn">Report a problem</a>
+                                <a href="https://www.skynettechnologies.com/report-accessibility-problem"target="_blank" class="help-btn">Report a problem</a>
                             </section>
                         </div>
                     </div>
